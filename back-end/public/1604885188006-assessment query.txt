@@ -1,0 +1,36 @@
+psql -U postgres
+
+create database assessment;
+
+\l 			
+
+
+\c assessment
+
+
+
+CREATE TABLE company(
+comp_id REAL PRIMARY KEY,
+comp_name VARCHAR(100) NOT NULL
+);
+ \d company
+
+
+create table department(
+dept_id real primary key,
+dept_name varchar(100) not null,
+comp_id real references company(comp_id) not null
+);
+\d department
+
+
+
+create table dept_rep(
+rep_id real primary key,
+rep_name varchar(50) not null,
+designaion varchar(50) not null,
+dept_id real references department(dept_id) not null,
+comp_id real references company(comp_id) not null 
+);
+
+\d dept_rep
